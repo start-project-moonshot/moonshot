@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Launch Your Academic Dreams | Project Moonshot</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+        <style>
+            :root {
+                --primary-color: #3498db;
+                --secondary-color: #2c3e50;
+                --accent-color: #e74c3c;
+                --text-color: #333;
+                --light-bg: #ecf0f1;
+            }
+            html {
+                scroll-snap-type: y mandatory;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: 'Roboto', sans-serif;
+                color: var(--text-color);
+            }
+            nav {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                background-color: transparent;
+                z-index: 1000;
+                transition: background-color 0.3s ease;
+            }
+            nav.scrolled {
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+            nav ul {
+                display: flex;
+                justify-content: center;
+                list-style-type: none;
+                padding: 20px 0;
+                margin: 0;
+            }
+            nav ul li {
+                margin: 0 15px;
+            }
+            nav ul li a {
+                text-decoration: none;
+                color: #fff;
+                font-weight: bold;
+                transition: color 0.3s ease;
+            }
+            nav ul li a:hover {
+                color: var(--primary-color);
+            }
+            section {
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                padding: 60px 20px;
+                position: relative;
+                scroll-snap-align: start;
+                scroll-snap-stop: always;
+            }
+            h1, h2 {
+                margin-bottom: 30px;
+            }
+            #welcome {
+                background-color: #000;
+                color: #fff;
+            }
+            #about {
+                background-color: var(--light-bg);
+            }
+            #form-section {
+                background-color: #fff;
+            }
+            #contact {
+                background-color: var(--light-bg);
+            }
+            iframe {
+                border: none;
+                width: 100%;
+                max-width: 640px;
+                height: 800px;
+                box-shadow: 0 0 20px rgba(0,0,0,0.1);
+                border-radius: 10px;
+            }
+            .btn {
+                text-decoration: none;
+                color: #fff;
+                background-color: var(--accent-color);
+                padding: 12px 24px;
+                border-radius: 30px;
+                font-weight: bold;
+                transition: all 0.3s ease;
+                display: inline-block;
+                margin-top: 20px;
+            }
+            .btn:hover {
+                background-color: #c0392b;
+                transform: translateY(-3px);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            }
+            .scroll-down {
+                position: absolute;
+                bottom: 20px;
+                color: #fff;
+                font-size: 16px;
+                animation: bounce 2s infinite;
+            }
+            .arrow {
+                display: block;
+                margin-top: 5px;
+                font-size: 24px;
+            }
+            .about-content, .form-content, .contact-content {
+                max-width: 800px;
+                margin: auto;
+                line-height: 1.8;
+            }
+            .about-content p, .form-content p, .contact-content p {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% {
+                    transform: translateY(0);
+                }
+                40% {
+                    transform: translateY(-20px);
+                }
+                60% {
+                    transform: translateY(-10px);
+                }
+            }
+            .language-switcher {
+                position: absolute;
+                right: 20px;
+                top: 20px;
+            }
+            #langButton {
+                background-color: transparent;
+                border: 1px solid #fff;
+                color: #fff;
+                padding: 5px 10px;
+                cursor: pointer;
+                font-size: 14px;
+            }
+            .language-options {
+                display: none;
+                position: absolute;
+                background-color: #fff;
+                min-width: 120px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+            }
+            .language-options a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+            .language-options a:hover {
+                background-color: #f1f1f1;
+            }
+            .show {
+                display: block;
+            }
+        </style>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    </head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#welcome">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#form-section">Start your Moonshot</a></li>
+            <li><a href="#contact">Contact Me</a></li>
+        </ul>
+        <div class="language-switcher">
+            <button id="langButton">🌐 Language</button>
+            <div class="language-options">
+                <a href="#" data-lang="en">English</a>
+                <a href="#" data-lang="ca">Català</a>
+                <a href="#" data-lang="es">Español</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="welcome">
+        <h1><span id="typed"></span></h1>
+        <div class="scroll-down">
+            <span>Embark on your academic odyssey</span>
+            <span class="arrow">▼</span>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>Start your Moonshot</h2>
+        <div class="about-content">
+            <p>Have you ever dreamed about studying at a specific program in your dream school? Do you feel like that might just be impossible or you feel lost on how to even reach there? I did so too! I was lucky enough to find a couple of other students who decided to invest time and energy on me to help me figure this out, and now it's my time to do it for you!</p>
+            <p> I am looking for students at any stage of their lifes who have the dream of enrolling in their dream program anywhere in the world! That can mean undergraduate, Master, MBA or PhD programs in any field.</p>
+            <p><em>I am Marcel Torne, originally from Spain, I studied Computer Science at EPFL in Switzerland, then pursued my Master's at Harvard, including a thesis and a pre-doctoral year at MIT. Now, I'm starting my PhD in Robot Learning at Stanford.</em></p>
+            <p>If I am not the right person to give the best advice, I am commited to put you in contact with other friends in the network who would be more suited for to help you. </p>
+            <p>Financials were a big question mark when I was deciding where to apply, however don't let the financial concerns hold you back there are find ways to go around these.</p>
+            <p>If you're passionate and ambitious, let's prepare you for your best moonshot at your dream program!</p>
+        </div>
+    </section>
+
+    <section id="form-section">
+        <div class="form-content">
+            <h2>Start Your Moonshot Journey Here</h2>
+            <p><strong>Help me learn more about yourself and how I could help you</strong></p>
+            <p>Fill out the form below so that I can best assess your case. </p> 
+            <p>I am mostly searching for future, past and present motivation and passion.</p>
+        </div>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd9FafkPgBE7yGffkbuXNtg7SifxHuijlNVfUpLQ_HxewcFZg/viewform?embedded=true" width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-content">
+            <p>Do you have any questions, ideas how to improve the project, would like to collaborate, or just want to chat? </p>
+            <a href="mailto:marcelto@mit.edu" class="btn">Send me an email!</a>
+        </div>
+    </section>
+
+    <script>
+        new Typed('#typed', {
+            strings: [
+            'Welcome to Project Moonshot!',
+                'Bienvenido al Proyecto Moonshot!',
+                'Benvingut al Projecte Moonshot!',
+                'Bem-vindo ao Projeto Moonshot!'
+            ],
+            typeSpeed: 50,
+            backSpeed: 25,
+            loop: true,
+            showCursor: true
+        });
+
+        // Add this script to change nav background on scroll
+        window.addEventListener('scroll', function() {
+            var nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Language switcher
+        const langButton = document.getElementById('langButton');
+        const langOptions = document.querySelector('.language-options');
+
+        langButton.addEventListener('click', () => {
+            langOptions.classList.toggle('show');
+        });
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('#langButton')) {
+                if (langOptions.classList.contains('show')) {
+                    langOptions.classList.remove('show');
+                }
+            }
+        }
+
+        // Language switching logic
+        const langLinks = document.querySelectorAll('.language-options a');
+        const contents = {
+            en: {
+                welcome: 'Welcome to Project Moonshot!',
+                about: 'Start your Moonshot',
+                form: 'Start Your Moonshot Journey Here',
+                contact: 'Contact Me'
+            },
+            ca: {
+                welcome: 'Benvingut al Projecte Moonshot!',
+                about: 'Comença el teu Moonshot',
+                form: 'Comença el teu viatge Moonshot aquí',
+                contact: 'Contacta\'m'
+            },
+            es: {
+                welcome: 'Bienvenido al Proyecto Moonshot!',
+                about: 'Inicia tu Moonshot',
+                form: 'Inicia tu viaje Moonshot aquí',
+                contact: 'Contáctame'
+            }
+        };
+
+        langLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = e.target.getAttribute('data-lang');
+                changeLanguage(lang);
+            });
+        });
+
+        function changeLanguage(lang) {
+            // document.querySelector('#welcome h1').textContent = contents[lang].welcome;
+            document.querySelector('#about h2').textContent = contents[lang].about;
+            document.querySelector('#form-section h2').textContent = contents[lang].form;
+            document.querySelector('#contact h2').textContent = contents[lang].contact;
+            
+            // Update navigation links
+            document.querySelector('nav ul li:nth-child(2) a').textContent = contents[lang].about;
+            document.querySelector('nav ul li:nth-child(3) a').textContent = contents[lang].form.split(' ')[0];
+            document.querySelector('nav ul li:nth-child(4) a').textContent = contents[lang].contact;
+            
+            langOptions.classList.remove('show');
+        }
+    </script>
+</body>
+</html>
