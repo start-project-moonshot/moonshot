@@ -170,6 +170,37 @@
             .show {
                 display: block;
             }
+
+            @media (max-width: 768px) {
+                nav ul {
+                    flex-direction: column;
+                    padding: 10px 0;
+                    display: none;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    background-color: rgba(0, 0, 0, 0.9);
+                }
+                nav ul li {
+                    margin: 10px 0;
+                }
+                h1 {
+                    font-size: 24px;
+                }
+                h2 {
+                    font-size: 20px;
+                }
+                .about-content p, .form-content p, .contact-content p {
+                    font-size: 16px;
+                }
+                .btn {
+                    padding: 10px 20px;
+                }
+                iframe {
+                    height: 600px;
+                }
+            }
         </style>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
