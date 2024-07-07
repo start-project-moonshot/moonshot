@@ -64,6 +64,7 @@
                 position: relative;
                 scroll-snap-align: start;
                 scroll-snap-stop: always;
+                z-index: 1;
             }
             h1, h2 {
                 margin-bottom: 30px;
@@ -141,7 +142,10 @@
                 position: absolute;
                 right: 20px;
                 top: 20px;
+                z-index: 1002;
+
             }
+
             #langButton {
                 background-color: transparent;
                 border: 1px solid #fff;
@@ -190,6 +194,15 @@
                 cursor: pointer;
             }
 
+            nav ul {
+                display: flex;
+                justify-content: center;
+                list-style-type: none;
+                padding: 20px 0;
+                margin: 0;
+            }
+
+
             @media (max-width: 768px) {
 
                 .menu-btn {
@@ -224,6 +237,45 @@
                 iframe {
                     height: 600px;
                 }
+
+                nav ul {
+                    display: none;
+                    flex-direction: column;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    background-color: rgba(0, 0, 0, 0.9);
+                    padding: 60px 0 20px;
+                }
+                
+                nav ul.show {
+                    display: flex;
+                }
+
+                nav {
+                    padding: 10px;
+                }
+                
+                .menu-btn {
+                    display: block;
+                }
+
+                nav ul {
+                    display: none;
+                    flex-direction: column;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    background-color: rgba(0, 0, 0, 0.9);
+                    padding: 60px 0 20px;
+                }
+                
+                nav ul.show {
+                    display: flex;
+                }
+
             }
         </style>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
@@ -239,6 +291,7 @@
         </div>
     </div>
     <nav>
+        <button class="menu-btn">☰</button>
         <ul>
             <li><a href="#welcome">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -442,17 +495,25 @@
         const nav = document.querySelector('nav ul');
         const menuBtn = document.querySelector('.menu-btn');
 
-        menuBtn.addEventListener('click', () => {
-            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        menuBtn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            nav.classList.toggle('show');
         });
 
         // Hide menu on link click
         nav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {
-                    nav.style.display = 'none';
+                    nav.classList.remove('show');
                 }
             });
+        });
+
+        // Hide menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (window.innerWidth <= 768 && !nav.contains(event.target) && event.target !== menuBtn) {
+                nav.classList.remove('show');
+            }
         });
     </script>
 </body>
